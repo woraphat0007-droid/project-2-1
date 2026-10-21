@@ -135,8 +135,6 @@ function toast(msg) {
 }
 
 $('#addReward').addEventListener('click', e => { e.preventDefault(); toast('ฟีเจอร์รีวอร์ดสเร็วๆ นี้'); });
-$('#rewardsLink').addEventListener('click', e => { e.preventDefault(); toast('ฟีเจอร์รีวอร์ดสเร็วๆ นี้'); });
-
 $('#payBtn').addEventListener('click', () => {
   if (!cart.length) return;
   const ok = confirm('ยืนยันการสั่งซื้อ ' + $('#grand').textContent + ' ?');

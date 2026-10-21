@@ -1,0 +1,36 @@
+.registration-card { max-width: 470px; }
+
+.registration-form > input[type="text"],
+.registration-form > input[type="email"],
+.registration-form > input[type="tel"],
+.registration-form .password-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: .9rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.registration-form input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(214, 43, 31, .1);
+}
+
+.registration-form input::placeholder { color: #a09b96; }
+.registration-form .field-label { margin-top: 14px; }
+.registration-form .password-field input { padding-right: 68px; }
+.terms-option { align-items: flex-start; line-height: 1.6; }
+.terms-option input { flex: 0 0 auto; margin-top: 3px; }
+.terms-option a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+.terms-option a:hover { color: var(--red-dark); }
+.signup-link { display: inline-block; text-decoration: none; }
+
+@media (min-width: 700px) {
+  .registration-page { box-shadow: 0 0 40px rgba(0, 0, 0, .12); }
+}

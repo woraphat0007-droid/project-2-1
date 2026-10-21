@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff6e9">
+  <title>สมัครสมาชิก | Pizza Pao</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="reg.css">
+</head>
+<body class="profile-page registration-page">
+  <header class="profile-header">
+    <a class="brand" href="index.html" aria-label="Pizza Pao หน้าหลัก">
+      <span class="brand-mark" aria-hidden="true">🍕</span>
+      <span class="brand-name">Pizza <b>Pao</b></span>
+    </a>
+    <a class="back-link" href="index.html">กลับหน้าหลัก</a>
+  </header>
+
+  <main class="profile-main">
+    <section class="login-card registration-card" aria-labelledby="registerTitle">
+      <div class="login-art" aria-hidden="true">
+        <span class="art-spark spark-one">✦</span>
+        <span class="art-pizza">🍕</span>
+        <span class="art-spark spark-two">✦</span>
+      </div>
+
+      <p class="login-eyebrow">PIZZA PAO REWARDS</p>
+      <h1 id="registerTitle">สร้างบัญชีสมาชิก</h1>
+      <p class="login-intro">สมัครวันนี้ รับสิทธิพิเศษและสะสมรีวอร์ดสได้ทุกครั้งที่สั่ง</p>
+
+      <form class="login-form registration-form" id="registerForm">
+        <label for="fullName">ชื่อ-นามสกุล</label>
+        <input id="fullName" name="fullName" type="text" placeholder="กรอกชื่อและนามสกุล" autocomplete="name" required>
+
+        <label class="field-label" for="email">อีเมล</label>
+        <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" required>
+
+        <label class="field-label" for="phone">เบอร์โทรศัพท์</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="กรอกเบอร์โทรศัพท์"
+          autocomplete="tel"
+          inputmode="tel"
+          pattern="[0-9]{9,15}"
+          title="กรุณากรอกเบอร์โทรศัพท์เป็นตัวเลข 9–15 หลัก"
+          required
+        >
+
+        <label class="field-label" for="password">ตั้งรหัสผ่าน</label>
+        <div class="password-field">
+          <input id="password" name="password" type="password" placeholder="อย่างน้อย 8 ตัวอักษร" autocomplete="new-password" minlength="8" required>
+          <button class="password-toggle" type="button" data-password-toggle="password" aria-label="แสดงรหัสผ่าน" aria-pressed="false">แสดง</button>
+        </div>
+
+        <label class="field-label" for="confirmPassword">ยืนยันรหัสผ่าน</label>
+        <div class="password-field">
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="กรอกรหัสผ่านอีกครั้ง" autocomplete="new-password" minlength="8" required>
+          <button class="password-toggle" type="button" data-password-toggle="confirmPassword" aria-label="แสดงรหัสผ่าน" aria-pressed="false">แสดง</button>
+        </div>
+
+        <label class="remember-option terms-option">
+          <input id="terms" name="terms" type="checkbox" required>
+          <span>ฉันยอมรับ <a href="#" id="termsLink">ข้อกำหนดการใช้งานและนโยบายความเป็นส่วนตัว</a></span>
+        </label>
+
+        <button class="btn-red login-submit" type="submit">สมัครสมาชิก</button>
+        <p class="login-message" id="registerMessage" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <p class="signup-prompt">มีบัญชีสมาชิกแล้ว? <a href="profile.html">เข้าสู่ระบบ</a></p>
+      <a class="browse-link" href="menu.html">เลือกดูเมนู Pizza Pao</a>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="เมนูหลัก">
+    <a href="index.html"><span>🏠</span>หน้าหลัก</a>
+    <a href="menu.html"><span>🍕</span>เมนู</a>
+    <a href="reward.html"><span>🎟️</span>รีวอร์ดส</a>
+    <a href="cart.html" id="cartLink"><span>🛒<b class="badge" id="cartCount">0</b></span>ตะกร้า</a>
+    <a href="profile.html"><span>👤</span>โปรไฟล์</a>
+  </nav>
+
+  <script src="reg.js"></script>
+</body>
+</html>

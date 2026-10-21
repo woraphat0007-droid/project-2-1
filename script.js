@@ -102,12 +102,6 @@ $('#goDelivery').addEventListener('click', () => {
   openModal();
 });
 
-// ===== ปุ่มสมัครสมาชิก =====
-$('#signupBtn').addEventListener('click', () => {
-  const name = prompt('ชื่อของคุณ:');
-  if (name && name.trim()) showToast('ยินดีต้อนรับ ' + name.trim() + ' 🎉');
-});
-
 updateCart();
 
 // ===== จำสาขา/วิธีรับสินค้าที่เลือก (ใช้ร่วมกับหน้าเมนูและตะกร้า) =====

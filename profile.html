@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff6e9">
+  <title>เข้าสู่ระบบ | Pizza Pao</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body class="profile-page">
+  <header class="profile-header">
+    <a class="brand" href="index.html" aria-label="Pizza Pao หน้าหลัก">
+      <span class="brand-mark" aria-hidden="true">🍕</span>
+      <span class="brand-name">Pizza <b>Pao</b></span>
+    </a>
+    <a class="back-link" href="index.html">กลับหน้าหลัก</a>
+  </header>
+
+  <main class="profile-main">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <div class="login-art" aria-hidden="true">
+        <span class="art-spark spark-one">✦</span>
+        <span class="art-pizza">🍕</span>
+        <span class="art-spark spark-two">✦</span>
+      </div>
+
+      <p class="login-eyebrow">PIZZA PAO REWARDS</p>
+      <h1 id="loginTitle">ยินดีต้อนรับกลับมา</h1>
+      <p class="login-intro">เข้าสู่ระบบเพื่อรับสิทธิพิเศษและสะสมรีวอร์ดสของคุณ</p>
+
+      <form class="login-form" id="loginForm">
+        <label for="username">อีเมลหรือเบอร์โทรศัพท์</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="กรอกอีเมลหรือเบอร์โทรศัพท์"
+          autocomplete="username"
+          required
+        >
+
+        <div class="password-label">
+          <label for="password">รหัสผ่าน</label>
+          <button class="forgot-link" id="forgotPassword" type="button">ลืมรหัสผ่าน?</button>
+        </div>
+        <div class="password-field">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="กรอกรหัสผ่าน"
+            autocomplete="current-password"
+            required
+          >
+          <button class="password-toggle" id="passwordToggle" type="button" aria-label="แสดงรหัสผ่าน" aria-pressed="false">
+            แสดง
+          </button>
+        </div>
+
+        <label class="remember-option">
+          <input type="checkbox" name="remember">
+          <span>จดจำฉันไว้ในระบบ</span>
+        </label>
+
+        <button class="btn-red login-submit" type="submit">เข้าสู่ระบบ</button>
+        <p class="login-message" id="loginMessage" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <p class="signup-prompt">ยังไม่มีบัญชีสมาชิก? <a href="reg.html">สมัครสมาชิก</a></p>
+      <a class="browse-link" href="menu.html">เลือกดูเมนู Pizza Pao</a>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="เมนูหลัก">
+    <a href="index.html"><span>🏠</span>หน้าหลัก</a>
+    <a href="menu.html"><span>🍕</span>เมนู</a>
+    <a href="reward.html"><span>🎟️</span>รีวอร์ดส</a>
+    <a href="cart.html" id="cartLink"><span>🛒<b class="badge" id="cartCount">0</b></span>ตะกร้า</a>
+    <a href="profile.html" class="active" aria-current="page"><span>👤</span>โปรไฟล์</a>
+  </nav>
+
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff6e9">
+  <title>รีวอร์ดส | Pizza Pao</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reward.css">
+</head>
+<body class="reward-page">
+  <header class="store-bar" id="storeBar">
+    <div class="store-info">
+      <strong id="modeText">รับที่ร้าน</strong>
+      <div class="store-line">
+        <span class="pin">📍</span>
+        <span id="storeText">Pizza Pao สาขาสยาม</span>
+        <span class="arrow">▶</span>
+        <span id="timeText">เดี๋ยวนี้</span>
+      </div>
+    </div>
+    <button class="btn-outline" id="changeBtn" type="button">เปลี่ยนแปลง</button>
+  </header>
+
+  <nav class="reward-tabs" id="rewardTabs" aria-label="หมวดรีวอร์ดส">
+    <a class="reward-tab active" href="#for-you" data-section="for-you">รีวอร์ดสเฉพาะคุณ</a>
+    <a class="reward-tab" href="#great-deals" data-section="great-deals">รีวอร์ดสคุ้ม</a>
+  </nav>
+
+  <main class="reward-main">
+    <section class="reward-section" id="for-you" aria-labelledby="forYouTitle">
+      <h1 id="forYouTitle">รีวอร์ดสเฉพาะคุณ</h1>
+      <p class="section-intro">ดีลพิเศษที่เลือกมาให้คุณ อร่อยคุ้มได้ทุกวัน</p>
+
+      <article class="reward-offer">
+        <div class="offer-copy">
+          <span class="offer-label">เฉพาะรับที่ร้าน</span>
+          <h2>ดีลแอปผู้พัน คุ้มทุกวัน</h2>
+          <p class="offer-price">฿119.00</p>
+          <p class="offer-expiry">สิ้นสุดวันที่ 04/01/2027</p>
+          <button class="btn-red offer-button" type="button" data-add-item data-name="ดีลแอป 4 ชิ้น" data-price="119" data-emoji="🍕">เพิ่มลงตะกร้า</button>
+        </div>
+        <div class="offer-art offer-pizza" aria-hidden="true">
+          <span class="offer-emoji">🍕</span>
+          <span class="offer-ribbon">4 ชิ้น 119.-<small>ปกติ 180.-</small></span>
+        </div>
+      </article>
+
+      <article class="reward-offer">
+        <div class="offer-copy">
+          <span class="offer-label">เฉพาะเดลิเวอรี</span>
+          <h2>ฟรีค่าส่ง*</h2>
+          <p class="offer-condition">เมื่อสั่งครบ ฿350 ขึ้นไป</p>
+          <p class="offer-expiry">สิ้นสุดวันที่ 30/10/2026</p>
+          <button class="btn-red offer-button" id="deliveryOffer" type="button">สั่งเดลิเวอรี</button>
+        </div>
+        <div class="offer-art offer-delivery" aria-hidden="true">
+          <span class="offer-emoji">🛵</span>
+          <span class="delivery-bubble">ส่งฟรี!</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="reward-section great-deals-section" id="great-deals" aria-labelledby="greatDealsTitle">
+      <h2 id="greatDealsTitle">รีวอร์ดสคุ้ม</h2>
+      <p class="section-intro">ความอร่อยสุดคุ้ม รอให้คุณมาลอง</p>
+
+      <article class="great-deal-card">
+        <div class="great-deal-pizza" aria-hidden="true">🍕</div>
+        <div class="great-deal-copy">
+          <p>โปรโมทชันเฉพาะ<br>ช่วงนี้เท่านั้นรับ<br><strong>สั่งเลย!</strong></p>
+          <a class="btn-red great-deal-menu" href="menu.html">ดูโปรโมชั่น</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="เมนูหลัก">
+    <a href="index.html"><span>🏠</span>หน้าหลัก</a>
+    <a href="menu.html"><span>🍕</span>เมนู</a>
+    <a href="reward.html" class="active" aria-current="page"><span>🎟️</span>รีวอร์ดส</a>
+    <a href="cart.html" id="cartLink"><span>🛒<b class="badge" id="cartCount">0</b></span>ตะกร้า</a>
+    <a href="profile.html"><span>👤</span>โปรไฟล์</a>
+  </nav>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <h3>เลือกวิธีรับสินค้า</h3>
+      <div class="seg">
+        <button class="seg-btn active" type="button" data-mode="รับที่ร้าน">รับที่ร้าน</button>
+        <button class="seg-btn" type="button" data-mode="เดลิเวอรี">เดลิเวอรี</button>
+      </div>
+      <label for="storeSelect">สาขา</label>
+      <select id="storeSelect">
+        <option>Pizza Pao สาขาสยาม</option>
+        <option>Pizza Pao สาขาอารีย์</option>
+        <option>Pizza Pao สาขาเซ็นทรัลลาดพร้าว</option>
+        <option>Pizza Pao สาขาเชียงใหม่</option>
+      </select>
+      <label for="timeSelect">เวลา</label>
+      <select id="timeSelect">
+        <option>เดี๋ยวนี้</option>
+        <option>อีก 30 นาที</option>
+        <option>อีก 1 ชั่วโมง</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-outline" id="cancelBtn" type="button">ยกเลิก</button>
+        <button class="btn-red" id="saveBtn" type="button">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="reward.js"></script>
+</body>
+</html>

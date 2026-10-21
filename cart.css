@@ -138,3 +138,12 @@
   font-size: .95rem;
 }
 .note.pickup { background: #edf7ee; }
+
+@media (max-width: 380px) {
+  .cart-body .store-bar { gap: 6px; padding: 10px 12px; }
+  .cart-body .store-info { flex: 1; min-width: 0; }
+  .cart-body .store-info strong { font-size: .9rem; }
+  .cart-body .store-line { gap: 4px; font-size: .78rem; }
+  .cart-body #storeText { max-width: 90px; }
+  .cart-body .store-bar .btn-outline { flex: 0 0 auto; padding: 7px 10px; font-size: .78rem; }
+}

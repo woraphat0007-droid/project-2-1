@@ -1,0 +1,156 @@
+.profile-page {
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255, 224, 183, .55), transparent 45%),
+    var(--cream);
+  padding-bottom: 96px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand-mark { font-size: 1.8rem; }
+.brand-name { font-size: 1.2rem; font-weight: 500; letter-spacing: -.04em; }
+.brand-name b { color: var(--red); }
+.back-link { color: #5b5651; font-size: .85rem; text-decoration: none; }
+.back-link:hover, .password-label a:hover, .signup-prompt a:hover, .browse-link:hover { color: var(--red-dark); }
+
+.profile-main {
+  min-height: calc(100vh - 168px);
+  display: grid;
+  place-items: center;
+  padding: 12px 18px 40px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 30px 28px 26px;
+  border: 1px solid rgba(227, 225, 222, .8);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 16px 50px rgba(76, 42, 24, .09);
+}
+
+.login-art {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+.art-pizza { font-size: 2.7rem; }
+.art-spark { position: absolute; color: var(--red); font-size: 1.1rem; }
+.spark-one { top: 9px; right: 7px; }
+.spark-two { bottom: 10px; left: 5px; font-size: .85rem; }
+
+.login-eyebrow {
+  color: var(--red);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-align: center;
+}
+
+.login-card h1 {
+  margin-top: 8px;
+  font-size: 1.75rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.login-intro {
+  max-width: 310px;
+  margin: 8px auto 24px;
+  color: #66615e;
+  font-size: .9rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.login-form > label, .password-label label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.login-form input[type="text"], .password-field input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: .9rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.login-form input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(214, 43, 31, .1);
+}
+
+.login-form input::placeholder { color: #a09b96; }
+.password-label { display: flex; align-items: center; justify-content: space-between; margin-top: 17px; }
+.password-label label { margin-bottom: 7px; }
+.forgot-link { padding: 0; background: transparent; color: var(--red); font: inherit; font-size: .8rem; }
+.forgot-link:hover { color: var(--red-dark); }
+
+.password-field { position: relative; }
+.password-field input { padding-right: 68px; }
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  padding: 5px;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #77716d;
+  font-size: .8rem;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 17px 0 20px;
+  color: #514d49;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+.remember-option input { width: 17px; height: 17px; accent-color: var(--red); }
+.login-submit { width: 100%; padding: 13px 20px; }
+.login-message { margin-top: 12px; color: var(--red-dark); font-size: .82rem; line-height: 1.5; text-align: center; }
+.signup-prompt { margin-top: 20px; color: #625d58; font-size: .85rem; text-align: center; }
+.signup-prompt a { color: var(--red); font-weight: 700; text-decoration: none; }
+.browse-link { display: block; width: fit-content; margin: 14px auto 0; color: #625d58; font-size: .82rem; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 380px) {
+  .profile-header { padding-inline: 16px; }
+  .login-card { padding: 26px 20px 22px; }
+  .login-card h1 { font-size: 1.55rem; }
+}
+
+@media (min-width: 700px) {
+  .profile-page { box-shadow: 0 0 40px rgba(0, 0, 0, .12); }
+}

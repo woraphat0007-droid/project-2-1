@@ -1,0 +1,193 @@
+.reward-page {
+  padding-bottom: 110px;
+  background: #fff;
+}
+
+.reward-page .store-bar { position: sticky; top: 0; z-index: 40; }
+
+.reward-tabs {
+  position: sticky;
+  top: var(--store-h, 72px);
+  z-index: 35;
+  display: flex;
+  overflow-x: auto;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
+}
+
+.reward-tabs::-webkit-scrollbar { display: none; }
+
+.reward-tab {
+  flex: 0 0 auto;
+  padding: 16px 18px 13px;
+  border-bottom: 3px solid transparent;
+  color: #a5a5a5;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.reward-tab.active { border-bottom-color: var(--ink); color: var(--ink); }
+
+.reward-section {
+  padding: 30px 16px 22px;
+  scroll-margin-top: 135px;
+}
+
+.reward-section h1,
+.reward-section h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.section-intro {
+  margin: 6px 0 20px;
+  color: #69635e;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.reward-offer {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  min-height: 198px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .12);
+}
+
+.offer-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 14px;
+}
+
+.offer-label {
+  color: var(--red);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.offer-copy h2 {
+  margin-top: 7px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.offer-price { margin-top: auto; font-size: 1.1rem; font-weight: 700; }
+.offer-condition { margin-top: 5px; font-size: .8rem; line-height: 1.5; }
+.offer-expiry { margin-top: 4px; color: #716b66; font-size: .72rem; line-height: 1.4; }
+.offer-button { width: 100%; margin-top: 12px; padding: 10px 9px; font-size: .8rem; }
+
+.offer-art {
+  position: relative;
+  display: grid;
+  min-height: 198px;
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff1d6, #ffd0a0);
+}
+
+.offer-emoji {
+  font-size: 5rem;
+  filter: drop-shadow(0 8px 8px rgba(83, 43, 15, .18));
+}
+
+.offer-ribbon {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 9px;
+  transform: rotate(-5deg);
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.offer-ribbon small { font-size: .57rem; font-weight: 400; }
+.offer-delivery { background: linear-gradient(135deg, #fff0cc, #ffc78a); }
+
+.delivery-bubble {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  padding: 7px 10px;
+  transform: rotate(5deg);
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.great-deals-section { padding-top: 24px; }
+
+.great-deal-card {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
+  min-height: 260px;
+  padding: 20px 16px;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 219, 164, .8), transparent 45%),
+    linear-gradient(135deg, #fff6e9, #ffe1c1);
+}
+
+.great-deal-pizza {
+  display: grid;
+  width: 100%;
+  min-height: 180px;
+  place-items: center;
+  font-size: clamp(5rem, 24vw, 8rem);
+  filter: drop-shadow(0 12px 12px rgba(83, 43, 15, .2));
+}
+
+.great-deal-copy { padding-left: 8px; }
+.great-deal-copy p { font-size: 1.2rem; font-weight: 600; line-height: 1.65; }
+.great-deal-copy strong { color: var(--red); font-size: 1.45rem; }
+
+.great-deal-menu {
+  display: block;
+  margin-top: 14px;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: .88rem;
+}
+
+.great-deal-link {
+  display: block;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: .85rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+  .reward-tab { padding-inline: 14px; font-size: .9rem; }
+  .reward-section { padding-inline: 12px; }
+  .reward-section h1, .reward-section h2 { font-size: 1.75rem; }
+  .reward-offer { grid-template-columns: 1fr .82fr; min-height: 190px; }
+  .offer-copy { padding: 13px 10px; }
+  .offer-copy h2 { font-size: .95rem; }
+  .offer-art { min-height: 190px; }
+  .offer-emoji { font-size: 4.2rem; }
+  .great-deal-card { grid-template-columns: .8fr 1.2fr; padding: 16px 10px; }
+  .great-deal-pizza { font-size: 5rem; }
+  .great-deal-copy p { font-size: 1.05rem; }
+}
