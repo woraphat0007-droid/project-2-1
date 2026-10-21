@@ -43,8 +43,9 @@ try { cart = JSON.parse(localStorage.getItem('pizzaCart')) || []; } catch (e) { 
 
 function updateCart() {
   const badge = $('#cartCount');
-  badge.textContent = cart.length;
-  badge.classList.toggle('show', cart.length > 0);
+  const n = cart.reduce((t, i) => t + (i.qty || 1), 0);
+  badge.textContent = n;
+  badge.classList.toggle('show', n > 0);
   try { localStorage.setItem('pizzaCart', JSON.stringify(cart)); } catch (e) {}
 }
 
@@ -58,22 +59,15 @@ function showToast(msg) {
 
 $$('[data-item]').forEach(btn => {
   btn.addEventListener('click', () => {
-    cart.push({ name: btn.dataset.item, price: Number(btn.dataset.price) || 0 });
+    const name = btn.dataset.item;
+    const found = cart.find(c => c.name === name);
+    if (found) found.qty = (found.qty || 1) + 1;
+    else cart.push({ name, price: Number(btn.dataset.price) || 0, emoji: btn.dataset.emoji || '🍕', qty: 1 });
     updateCart();
     showToast('เพิ่ม "' + btn.dataset.item + '" ลงตะกร้าแล้ว 🍕');
   });
 });
 
-$('#cartLink').addEventListener('click', e => {
-  e.preventDefault();
-  if (!cart.length) return showToast('ตะกร้ายังว่างอยู่');
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  alert(
-    'รายการในตะกร้า\n' +
-    cart.map((i, n) => `${n + 1}. ${i.name}${i.price ? ' - ฿' + i.price : ''}`).join('\n') +
-    (total ? `\n\nรวม ฿${total}` : '')
-  );
-});
 
 // ===== Modal เปลี่ยนร้าน / วิธีรับสินค้า =====
 const modal = $('#modal');
@@ -115,3 +109,24 @@ $('#signupBtn').addEventListener('click', () => {
 });
 
 updateCart();
+
+// ===== จำสาขา/วิธีรับสินค้าที่เลือก (ใช้ร่วมกับหน้าเมนูและตะกร้า) =====
+try {
+  const st = JSON.parse(localStorage.getItem('pizzaStore'));
+  if (st) {
+    mode = st.mode;
+    $('#modeText').textContent = st.mode;
+    $('#storeText').textContent = st.store;
+    $('#timeText').textContent = st.time;
+    $('#storeSelect').value = st.store;
+    $('#timeSelect').value = st.time;
+    $$('.seg-btn').forEach(x => x.classList.toggle('active', x.dataset.mode === mode));
+  }
+} catch (e) {}
+$('#saveBtn').addEventListener('click', () => {
+  try {
+    localStorage.setItem('pizzaStore', JSON.stringify({
+      mode, store: $('#storeSelect').value, time: $('#timeSelect').value
+    }));
+  } catch (e) {}
+});

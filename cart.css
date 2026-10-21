@@ -1,0 +1,140 @@
+/* ===== หน้าตะกร้า ===== */
+.cart-body { background: var(--gray); padding-bottom: 110px; }
+.cart-body .store-bar { position: sticky; top: 0; z-index: 40; }
+
+/* ตะกร้าว่าง */
+.cart-empty {
+  margin: 28px 16px;
+  background: #f1efec;
+  padding: 80px 24px 0;
+  overflow: hidden;
+  min-height: 560px;
+}
+.cart-empty h1 { font-size: 2.1rem; line-height: 1.4; }
+.start-btn {
+  display: inline-block;
+  margin-top: 36px;
+  text-decoration: none;
+  padding: 18px 44px;
+  font-size: 1.05rem;
+}
+.empty-emoji {
+  font-size: 11rem;
+  text-align: center;
+  margin-top: 40px;
+  transform: rotate(-18deg);
+  filter: drop-shadow(0 18px 14px rgba(0,0,0,.25));
+}
+
+/* ส่วนหัว */
+.cart-head { background: #fff; padding: 0 16px 22px; }
+.mark { display: flex; gap: 10px; padding-left: 0; }
+.mark i { display: block; width: 14px; height: 40px; background: var(--red); }
+.cart-head h1 { font-size: 2.2rem; margin: 18px 0 24px; }
+.cart-links { display: flex; justify-content: space-between; font-size: 1.05rem; }
+.cart-links a { color: var(--ink); font-weight: 500; }
+.cart-links a:first-child { text-decoration: underline; }
+.cart-links a:last-child { text-decoration: none; }
+
+/* รายการสินค้า */
+#cartList { background: #fff; padding: 0 12px 20px; }
+.cart-item {
+  background: var(--gray);
+  border-radius: 10px;
+  padding: 18px 16px 14px;
+  margin-bottom: 18px;
+}
+.ci-top { display: flex; gap: 18px; align-items: flex-start; }
+.ci-img {
+  flex: 0 0 120px;
+  height: 90px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, #fff1d6, #ffd0a0);
+}
+.ci-name { font-weight: 600; font-size: 1.05rem; line-height: 1.4; }
+.ci-remove {
+  background: none;
+  text-decoration: underline;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 12px;
+  padding: 0;
+  color: var(--ink);
+}
+.ci-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid #ddd9d4;
+}
+.qty { display: flex; align-items: center; gap: 18px; font-size: 1.3rem; font-weight: 600; }
+.qty button {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+.qty button:disabled { border-color: #d7d4d0; color: #cfcbc6; cursor: default; }
+.ci-price { font-size: 1.1rem; font-weight: 500; }
+
+/* สรุปยอด */
+.summary {
+  background: #fff;
+  margin: 18px 10px 0;
+  border-radius: 16px;
+  padding: 28px 18px 22px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+.summary h2 { font-size: 1.5rem; margin-bottom: 18px; }
+.reward-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.reward-row a { color: var(--ink); font-weight: 500; }
+.sum-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 4px;
+  font-size: 1rem;
+  color: #555;
+}
+.sum-row b { color: var(--ink); font-weight: 600; }
+.sum-row s { color: #999; margin-right: 8px; font-weight: 400; }
+.summary hr { border: none; border-top: 1px solid var(--line); margin: 14px 0; }
+.grand-label { color: #555; padding: 0 4px; margin-bottom: 18px; }
+.pay-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e4002b;
+  color: #fff;
+  padding: 20px 28px;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform .15s ease;
+}
+.pay-btn:active { transform: scale(.97); }
+.note {
+  margin-top: 16px;
+  background: #fdf3e0;
+  padding: 16px;
+  border-radius: 6px;
+  line-height: 1.7;
+  font-size: .95rem;
+}
+.note.pickup { background: #edf7ee; }

@@ -198,8 +198,9 @@ try { cart = JSON.parse(localStorage.getItem('pizzaCart')) || []; } catch (e) { 
 
 function updateCart() {
   const b = $('#cartCount');
-  b.textContent = cart.length;
-  b.classList.toggle('show', cart.length > 0);
+  const n = cart.reduce((t, i) => t + (i.qty || 1), 0);
+  b.textContent = n;
+  b.classList.toggle('show', n > 0);
   try { localStorage.setItem('pizzaCart', JSON.stringify(cart)); } catch (e) {}
 }
 function showToast(msg) {
@@ -210,18 +211,12 @@ function showToast(msg) {
   showToast.id = setTimeout(() => t.classList.remove('show'), 2000);
 }
 function addToCart(it) {
-  cart.push({ name: it.name, price: it.price });
+  const found = cart.find(c => c.name === it.name);
+  if (found) found.qty = (found.qty || 1) + 1;
+  else cart.push({ name: it.name, price: it.price, emoji: it.emoji, qty: 1 });
   updateCart();
   showToast('เพิ่ม "' + it.name + '" ลงตะกร้าแล้ว 🍕');
 }
-$('#cartLink').addEventListener('click', e => {
-  e.preventDefault();
-  if (!cart.length) return showToast('ตะกร้ายังว่างอยู่');
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  alert('รายการในตะกร้า\n' +
-    cart.map((i, n) => `${n + 1}. ${i.name} - ฿${i.price}`).join('\n') +
-    `\n\nรวม ฿${total}`);
-});
 updateCart();
 
 // ===== เลือกร้าน / วิธีรับสินค้า (จำค่าไว้ใช้ทุกหน้า) =====
