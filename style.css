@@ -1,0 +1,314 @@
+:root {
+  --red: #d62b1f;
+  --red-dark: #b01f15;
+  --cream: #fff6e9;
+  --ink: #1f2024;
+  --gray: #f7f6f4;
+  --line: #e3e1de;
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Prompt", "Noto Sans Thai", "Sarabun", system-ui, sans-serif;
+  background: var(--gray);
+  color: var(--ink);
+  max-width: 560px;
+  margin: 0 auto;
+  padding-bottom: 96px;
+  min-height: 100vh;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ---------- แถบร้าน ---------- */
+.store-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+}
+.store-info strong { font-size: 1.05rem; }
+.store-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: .95rem;
+  white-space: nowrap;
+}
+#storeText {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.arrow { color: var(--red); font-size: .6rem; }
+
+/* ---------- ปุ่ม ---------- */
+.btn-red, .btn-dark, .btn-outline {
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform .15s ease, background .2s ease;
+}
+.btn-red { background: var(--red); color: #fff; padding: 14px 40px; font-size: 1rem; }
+.btn-red:hover { background: var(--red-dark); }
+.btn-red.small { padding: 10px 18px; font-size: .9rem; margin-top: 12px; width: 100%; }
+.btn-dark { background: var(--ink); color: #fff; padding: 14px 44px; font-size: 1rem; }
+.btn-outline { background: #fff; border: 1.5px solid var(--ink); padding: 8px 18px; font-size: .95rem; }
+.btn-red:active, .btn-dark:active, .btn-outline:active { transform: scale(.96); }
+
+/* ---------- แบนเนอร์ ---------- */
+.hero {
+  position: relative;
+  background: #1a0a0c;
+  color: #fff;
+  overflow: hidden;
+}
+.slides {
+  display: flex;
+  transition: transform .6s ease;
+}
+.slide {
+  min-width: 100%;
+  min-height: 420px;
+  padding: 36px 24px 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.s1 { background: radial-gradient(circle at 80% 30%, #a3121f 0%, #2a070c 70%); }
+.s2 { background: radial-gradient(circle at 80% 30%, #c4561a 0%, #2a0f07 70%); }
+.s3 { background: radial-gradient(circle at 80% 30%, #1b6a8a 0%, #08202b 70%); }
+.s4 { background: radial-gradient(circle at 80% 30%, #6a2a8a 0%, #1c0a2b 70%); }
+.s5 { background: radial-gradient(circle at 80% 30%, #5a7a2a 0%, #14200a 70%); }
+
+.slide-text { position: relative; z-index: 2; margin-top: auto; }
+.price-tag { font-weight: 700; letter-spacing: .08em; font-size: 1.1rem; }
+.slide h2 { font-size: 1.9rem; margin: 4px 0 18px; line-height: 1.25; }
+.slide-emoji {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  font-size: 6.5rem;
+  filter: drop-shadow(0 12px 16px rgba(0,0,0,.45));
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+
+.dots {
+  position: absolute;
+  bottom: 64px;
+  left: 24px;
+  display: flex;
+  gap: 14px;
+  z-index: 3;
+}
+.dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  border: 2px solid transparent;
+  padding: 0;
+}
+.dot.active { background: transparent; border-color: #fff; }
+
+.hero-note {
+  position: absolute;
+  bottom: 12px;
+  left: 24px;
+  right: 24px;
+  font-size: .75rem;
+  line-height: 1.5;
+  opacity: .85;
+  z-index: 3;
+}
+
+/* ---------- โปรโมชั่น ---------- */
+.promos { padding: 36px 16px 28px; }
+.section-title { font-size: 2.2rem; margin-bottom: 20px; }
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.promo-card {
+  background: var(--gray);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.promo-img {
+  position: relative;
+  height: 170px;
+  background: linear-gradient(135deg, #ffe7b8, #ffc78a);
+  display: grid;
+  place-items: center;
+}
+.promo-emoji { font-size: 4.5rem; }
+.ribbon {
+  position: absolute;
+  top: 18px; right: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-6deg);
+}
+.ribbon small { font-size: .6rem; font-weight: 400; opacity: .8; }
+.channel {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: .65rem;
+  background: rgba(255,255,255,.85);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.promo-body { padding: 16px 14px 18px; display: flex; flex-direction: column; flex: 1; }
+.promo-body h3 { font-size: 1.1rem; line-height: 1.35; }
+.price { font-size: 1.1rem; margin: 6px 0; }
+.tag { font-weight: 700; font-size: .85rem; margin: 4px 0 10px; }
+.expire { font-size: .85rem; color: #555; margin-top: auto; }
+.expire.push { margin-top: auto; }
+
+/* ---------- สมัครสมาชิก ---------- */
+.rewards {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  padding: 48px 24px 0;
+  overflow: hidden;
+}
+.eyebrow { letter-spacing: .08em; font-weight: 700; font-size: .95rem; }
+.rewards h2 { font-size: 2rem; line-height: 1.35; margin: 18px 0; }
+.sub { font-size: .95rem; line-height: 1.7; margin-bottom: 26px; }
+.rewards-emoji {
+  font-size: 11rem;
+  line-height: 1;
+  margin-top: 24px;
+  margin-bottom: -30px;
+  filter: drop-shadow(0 14px 18px rgba(0,0,0,.35));
+}
+
+/* ---------- เมนูล่าง ---------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -4px 18px rgba(0,0,0,.1);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 4px 18px;
+  z-index: 30;
+}
+.bottom-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: .8rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 64px;
+}
+.bottom-nav a span { font-size: 1.5rem; position: relative; }
+.bottom-nav a.active { color: var(--red); }
+.badge {
+  position: absolute;
+  top: -4px; right: -10px;
+  background: var(--red);
+  color: #fff;
+  font-size: .65rem;
+  min-width: 18px; height: 18px;
+  border-radius: 999px;
+  display: none;
+  place-items: center;
+  padding: 0 4px;
+}
+.badge.show { display: grid; }
+
+/* ---------- หน้าต่าง Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 50;
+}
+.modal.open { display: flex; }
+.modal-box {
+  background: #fff;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 28px;
+  animation: slideUp .3s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: none; } }
+.modal-box h3 { margin-bottom: 16px; font-size: 1.3rem; }
+.modal-box label { display: block; margin: 14px 0 6px; font-weight: 600; font-size: .9rem; }
+.modal-box select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  font-size: 1rem;
+  font-family: inherit;
+}
+.seg { display: flex; background: var(--gray); border-radius: 999px; padding: 4px; }
+.seg-btn { flex: 1; background: transparent; padding: 10px; border-radius: 999px; font-weight: 600; }
+.seg-btn.active { background: var(--red); color: #fff; }
+.modal-actions { display: flex; gap: 10px; margin-top: 22px; }
+.modal-actions button { flex: 1; padding: 12px; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 110px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: .9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s ease;
+  z-index: 60;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- จอใหญ่ ---------- */
+@media (min-width: 700px) {
+  body { box-shadow: 0 0 40px rgba(0,0,0,.12); }
+}

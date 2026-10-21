@@ -1,14 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <text>
-        99
-    </text>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Pao | สั่งพิซซ่าออนไลน์</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+  <!-- แถบเลือกร้าน / รูปแบบการรับสินค้า -->
+  <header class="store-bar">
+    <div class="store-info">
+      <strong id="modeText">รับที่ร้าน</strong>
+      <div class="store-line">
+        <span class="pin">📍</span>
+        <span id="storeText">Pizza Pao สาขาสยาม</span>
+        <span class="arrow">▶</span>
+        <span id="timeText">เดี๋ยวนี้</span>
+      </div>
+    </div>
+    <button class="btn-outline" id="changeBtn">เปลี่ยนแปลง</button>
+  </header>
+
+  <main>
+    <!-- แบนเนอร์สไลด์ -->
+    <section class="hero" id="hero">
+      <div class="slides" id="slides">
+        <article class="slide s1">
+          <div class="slide-text">
+            <p class="price-tag">แค่ 299.-</p>
+            <h2>ปาร์ตี้ พิซซ่าชีสเยิ้ม</h2>
+            <button class="btn-red" data-item="ปาร์ตี้ พิซซ่าชีสเยิ้ม">สั่งเลย</button>
+          </div>
+          <div class="slide-emoji">🍕🧀</div>
+        </article>
+        <article class="slide s2">
+          <div class="slide-text">
+            <p class="price-tag">ซื้อ 1 แถม 1</p>
+            <h2>พิซซ่าหน้าเปปเปอโรนี</h2>
+            <button class="btn-red" data-item="เปปเปอโรนี 1 แถม 1">สั่งเลย</button>
+          </div>
+          <div class="slide-emoji">🍕🌶️</div>
+        </article>
+        <article class="slide s3">
+          <div class="slide-text">
+            <p class="price-tag">เริ่มต้น 159.-</p>
+            <h2>พิซซ่าหน้าซีฟู้ด</h2>
+            <button class="btn-red" data-item="พิซซ่าซีฟู้ด">สั่งเลย</button>
+          </div>
+          <div class="slide-emoji">🍕🦐</div>
+        </article>
+        <article class="slide s4">
+          <div class="slide-text">
+            <p class="price-tag">ชุดคู่ 349.-</p>
+            <h2>พิซซ่า + ปีกไก่ + น้ำ</h2>
+            <button class="btn-red" data-item="ชุดคู่ 349">สั่งเลย</button>
+          </div>
+          <div class="slide-emoji">🍕🍗🥤</div>
+        </article>
+        <article class="slide s5">
+          <div class="slide-text">
+            <p class="price-tag">เมนูใหม่</p>
+            <h2>พิซซ่าเห็ดทรัฟเฟิล</h2>
+            <button class="btn-red" data-item="พิซซ่าเห็ดทรัฟเฟิล">สั่งเลย</button>
+          </div>
+          <div class="slide-emoji">🍕🍄</div>
+        </article>
+      </div>
+      <div class="dots" id="dots"></div>
+      <p class="hero-note">• 24 ก.ย. 69 – 28 ต.ค. 69 • ราคาอาจแตกต่างกันในแต่ละช่องทางการขาย • สินค้ามีจำนวนจำกัด</p>
+    </section>
+
+    <!-- โปรโมชั่น -->
+    <section class="promos">
+      <h2 class="section-title">โปรโมชั่น</h2>
+      <div class="promo-grid">
+        <article class="promo-card">
+          <div class="promo-img">
+            <span class="promo-emoji">🍕</span>
+            <span class="ribbon">4 ชิ้น 119.-<small>ปกติ 180.-</small></span>
+            <span class="channel">🛍️ เฉพาะรับที่ร้าน</span>
+          </div>
+          <div class="promo-body">
+            <h3>ดีลแอปผู้พัน คุ้มทุกวัน</h3>
+            <p class="price">฿119.00</p>
+            <p class="tag">🛍️ เฉพาะรับที่ร้าน</p>
+            <p class="expire">สิ้นสุดวันที่ 04/01/2027</p>
+            <button class="btn-red small" data-item="ดีลแอป 4 ชิ้น" data-price="119">เพิ่มลงตะกร้า</button>
+          </div>
+        </article>
+
+        <article class="promo-card">
+          <div class="promo-img">
+            <span class="promo-emoji">🛵</span>
+            <span class="ribbon">ส่งฟรี!<small>เมื่อสั่งครบ 350.- ขึ้นไป</small></span>
+            <span class="channel">🛵 เฉพาะเดลิเวอรี</span>
+          </div>
+          <div class="promo-body">
+            <h3>ฟรีค่าส่ง*</h3>
+            <p class="tag">🚗 เฉพาะเดลิเวอรี</p>
+            <p class="expire push">สิ้นสุดวันที่ 30/10/2026</p>
+            <button class="btn-red small" id="goDelivery">สั่งเดลิเวอรี</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- สมัครสมาชิก -->
+    <section class="rewards">
+      <p class="eyebrow">สมัครสมาชิก Pizza Pao Rewards</p>
+      <h2>รับรีวอร์ดสุดพิเศษ<br>ได้ทุกวัน ไม่ต้องรอ</h2>
+      <p class="sub">สร้างบัญชีสมาชิก เพื่อสิทธิพิเศษต่างๆ<br>ของ Pizza Pao ได้เลยตอนนี้</p>
+      <button class="btn-dark" id="signupBtn">สร้างบัญชี</button>
+      <div class="rewards-emoji">🍕</div>
+    </section>
+  </main>
+
+  <!-- แถบเมนูด้านล่าง -->
+  <nav class="bottom-nav">
+    <a href="#" class="active"><span>🏠</span>หน้าหลัก</a>
+    <a href="#"><span>🍕</span>เมนู</a>
+    <a href="#"><span>🎟️</span>รีวอร์ดส</a>
+    <a href="#" id="cartLink"><span>🛒<b class="badge" id="cartCount">0</b></span>ตะกร้า</a>
+    <a href="#"><span>☰</span>เพิ่มเติม</a>
+  </nav>
+
+  <!-- หน้าต่างเปลี่ยนร้าน -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <h3>เลือกวิธีรับสินค้า</h3>
+      <div class="seg">
+        <button class="seg-btn active" data-mode="รับที่ร้าน">รับที่ร้าน</button>
+        <button class="seg-btn" data-mode="เดลิเวอรี">เดลิเวอรี</button>
+      </div>
+      <label for="storeSelect">สาขา</label>
+      <select id="storeSelect">
+        <option>Pizza Pao สาขาสยาม</option>
+        <option>Pizza Pao สาขาอารีย์</option>
+        <option>Pizza Pao สาขาเซ็นทรัลลาดพร้าว</option>
+        <option>Pizza Pao สาขาเชียงใหม่</option>
+      </select>
+      <label for="timeSelect">เวลา</label>
+      <select id="timeSelect">
+        <option>เดี๋ยวนี้</option>
+        <option>อีก 30 นาที</option>
+        <option>อีก 1 ชั่วโมง</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-outline" id="cancelBtn">ยกเลิก</button>
+        <button class="btn-red" id="saveBtn">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
