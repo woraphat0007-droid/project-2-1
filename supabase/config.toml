@@ -1,0 +1,4 @@
+project_id = "pizza-pao"
+
+[functions.checkout]
+verify_jwt = false
