@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เมนู | Pizza Pao</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body class="menu-page">
+
+  <!-- แถบเลือกร้าน -->
+  <header class="store-bar" id="storeBar">
+    <div class="store-info">
+      <strong id="modeText">รับที่ร้าน</strong>
+      <div class="store-line">
+        <span class="pin">📍</span>
+        <span id="storeText">Pizza Pao สาขาสยาม</span>
+        <span class="arrow">▶</span>
+        <span id="timeText">เดี๋ยวนี้</span>
+      </div>
+    </div>
+    <button class="btn-outline" id="changeBtn">เปลี่ยนแปลง</button>
+  </header>
+
+  <!-- แถบหมวดหมู่ + ปุ่มค้นหา -->
+  <div class="cat-bar" id="catBar">
+    <div class="cat-row">
+      <button class="search-btn" id="searchBtn" aria-label="ค้นหาเมนู">☰🔍</button>
+      <nav class="cat-tabs" id="catTabs"></nav>
+    </div>
+    <div class="search-row" id="searchRow">
+      <input type="search" id="searchInput" placeholder="ค้นหาชื่อเมนู เช่น เปปเปอโรนี" autocomplete="off">
+      <button class="clear-btn" id="clearBtn" aria-label="ล้างคำค้นหา">✕</button>
+    </div>
+  </div>
+
+  <main id="menuRoot"></main>
+
+  <p class="no-result" id="noResult" hidden>ไม่พบเมนูที่ค้นหา 🍕</p>
+
+  <button class="to-top" id="toTop" aria-label="กลับขึ้นด้านบน">⌃</button>
+
+  <!-- แถบเมนูด้านล่าง -->
+  <nav class="bottom-nav">
+    <a href="index.html"><span>🏠</span>หน้าหลัก</a>
+    <a href="menu.html" class="active"><span>🍕</span>เมนู</a>
+    <a href="#"><span>🎟️</span>รีวอร์ดส</a>
+    <a href="#" id="cartLink"><span>🛒<b class="badge" id="cartCount">0</b></span>ตะกร้า</a>
+    <a href="#"><span>☰</span>เพิ่มเติม</a>
+  </nav>
+
+  <!-- หน้าต่างเปลี่ยนร้าน -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <h3>เลือกวิธีรับสินค้า</h3>
+      <div class="seg">
+        <button class="seg-btn active" data-mode="รับที่ร้าน">รับที่ร้าน</button>
+        <button class="seg-btn" data-mode="เดลิเวอรี">เดลิเวอรี</button>
+      </div>
+      <label for="storeSelect">สาขา</label>
+      <select id="storeSelect">
+        <option>Pizza Pao สาขาสยาม</option>
+        <option>Pizza Pao สาขาอารีย์</option>
+        <option>Pizza Pao สาขาเซ็นทรัลลาดพร้าว</option>
+        <option>Pizza Pao สาขาเชียงใหม่</option>
+      </select>
+      <label for="timeSelect">เวลา</label>
+      <select id="timeSelect">
+        <option>เดี๋ยวนี้</option>
+        <option>อีก 30 นาที</option>
+        <option>อีก 1 ชั่วโมง</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-outline" id="cancelBtn">ยกเลิก</button>
+        <button class="btn-red" id="saveBtn">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="menu.js"></script>
+</body>
+</html>
