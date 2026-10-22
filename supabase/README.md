@@ -112,7 +112,8 @@ the IDs for homepage offers are `hero-party-cheese`, `hero-pepperoni-bogo`,
 For a hosted project, link this Supabase project, apply the migration, and deploy
 the `checkout` function. Set the hosted project URL and anon key in
 `supabase-client.js`, configure the exact website origin in
-`CHECKOUT_ALLOWED_ORIGINS`, and add the website URL to Supabase Auth's redirect
+`CHECKOUT_ALLOWED_ORIGINS` (the repository default includes
+`https://woraphat0007-droid.github.io`), and add the website URL to Supabase Auth's redirect
 URL allow list for email confirmation and password recovery. Enable email signup
 and configure the email provider in Supabase Auth. Supabase injects `SUPABASE_URL`
 and `SUPABASE_SERVICE_ROLE_KEY` into Edge Functions; the service role key must
