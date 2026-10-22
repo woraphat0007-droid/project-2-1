@@ -90,7 +90,7 @@
   font-weight: 600;
 }
 
-.login-form input[type="text"], .password-field input {
+.login-form input[type="text"], .login-form input[type="email"], .password-field input {
   width: 100%;
   min-height: 50px;
   padding: 12px 14px;

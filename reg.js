@@ -21,7 +21,7 @@ termsLink.addEventListener('click', event => {
   registerMessage.hidden = false;
 });
 
-registerForm.addEventListener('submit', event => {
+registerForm.addEventListener('submit', async event => {
   event.preventDefault();
 
   if (passwordInputs[0].value !== passwordInputs[1].value) {
@@ -33,8 +33,30 @@ registerForm.addEventListener('submit', event => {
   }
 
   passwordInputs[1].setCustomValidity('');
-  registerMessage.textContent = 'แบบฟอร์มนี้ยังไม่ได้เชื่อมต่อกับระบบสมาชิก';
-  registerMessage.hidden = false;
+  const formData = new FormData(registerForm);
+  try {
+    const { data, error } = await getPizzaSupabase().auth.signUp({
+      email: formData.get('email').trim(),
+      password: passwordInputs[0].value,
+      options: {
+        data: {
+          full_name: formData.get('fullName').trim(),
+          phone: formData.get('phone').trim(),
+        },
+      },
+    });
+    if (error) throw error;
+    if (data.session) {
+      const redirect = new URLSearchParams(window.location.search).get('redirect');
+      window.location.href = redirect === 'cart.html' ? 'cart.html' : 'index.html';
+      return;
+    }
+    registerMessage.textContent = 'สมัครสมาชิกสำเร็จ กรุณายืนยันอีเมล แล้วเข้าสู่ระบบก่อนสั่งซื้อ';
+    registerMessage.hidden = false;
+  } catch (error) {
+    registerMessage.textContent = error.message || 'สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่';
+    registerMessage.hidden = false;
+  }
 });
 
 passwordInputs[1].addEventListener('input', () => passwordInputs[1].setCustomValidity(''));

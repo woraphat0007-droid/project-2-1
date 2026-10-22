@@ -76,9 +76,11 @@ function updateCartBadge(cart) {
 $$('[data-add-item]').forEach(button => {
   button.addEventListener('click', () => {
     const cart = loadCart();
-    const found = cart.find(item => item.name === button.dataset.name);
+    const productId = productIdForName(button.dataset.name);
+    const found = cart.find(item => item.product_id === productId || item.name === button.dataset.name);
     if (found) found.qty = (Number(found.qty) || 1) + 1;
     else cart.push({
+      product_id: productId,
       name: button.dataset.name,
       price: Number(button.dataset.price),
       emoji: button.dataset.emoji,

@@ -60,9 +60,10 @@ function showToast(msg) {
 $$('[data-item]').forEach(btn => {
   btn.addEventListener('click', () => {
     const name = btn.dataset.item;
-    const found = cart.find(c => c.name === name);
+    const productId = productIdForName(name);
+    const found = cart.find(c => c.product_id === productId || c.name === name);
     if (found) found.qty = (found.qty || 1) + 1;
-    else cart.push({ name, price: Number(btn.dataset.price) || 0, emoji: btn.dataset.emoji || '🍕', qty: 1 });
+    else cart.push({ product_id: productId, name, price: Number(btn.dataset.price) || 0, emoji: btn.dataset.emoji || '🍕', qty: 1 });
     updateCart();
     showToast('เพิ่ม "' + btn.dataset.item + '" ลงตะกร้าแล้ว 🍕');
   });

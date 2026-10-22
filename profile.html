@@ -30,13 +30,13 @@
       <p class="login-intro">เข้าสู่ระบบเพื่อรับสิทธิพิเศษและสะสมรีวอร์ดสของคุณ</p>
 
       <form class="login-form" id="loginForm">
-        <label for="username">อีเมลหรือเบอร์โทรศัพท์</label>
+        <label for="username">อีเมล</label>
         <input
           id="username"
           name="username"
-          type="text"
-          placeholder="กรอกอีเมลหรือเบอร์โทรศัพท์"
-          autocomplete="username"
+          type="email"
+          placeholder="กรอกอีเมล"
+          autocomplete="email"
           required
         >
 
@@ -67,7 +67,11 @@
         <p class="login-message" id="loginMessage" role="status" aria-live="polite" hidden></p>
       </form>
 
-      <p class="signup-prompt">ยังไม่มีบัญชีสมาชิก? <a href="reg.html">สมัครสมาชิก</a></p>
+      <div id="memberPanel" hidden>
+        <p id="memberEmail" class="login-intro"></p>
+        <button class="btn-red login-submit" id="signOutButton" type="button">ออกจากระบบ</button>
+      </div>
+      <p class="signup-prompt" id="signupPrompt">ยังไม่มีบัญชีสมาชิก? <a href="reg.html">สมัครสมาชิก</a></p>
       <a class="browse-link" href="menu.html">เลือกดูเมนู Pizza Pao</a>
     </section>
   </main>
@@ -80,6 +84,8 @@
     <a href="profile.html" class="active" aria-current="page"><span>👤</span>โปรไฟล์</a>
   </nav>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
   <script src="profile.js"></script>
 </body>
 </html>

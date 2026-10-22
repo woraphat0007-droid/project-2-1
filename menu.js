@@ -211,9 +211,10 @@ function showToast(msg) {
   showToast.id = setTimeout(() => t.classList.remove('show'), 2000);
 }
 function addToCart(it) {
-  const found = cart.find(c => c.name === it.name);
+  const productId = productIdForName(it.name);
+  const found = cart.find(c => c.product_id === productId || c.name === it.name);
   if (found) found.qty = (found.qty || 1) + 1;
-  else cart.push({ name: it.name, price: it.price, emoji: it.emoji, qty: 1 });
+  else cart.push({ product_id: productId, name: it.name, price: it.price, emoji: it.emoji, qty: 1 });
   updateCart();
   showToast('เพิ่ม "' + it.name + '" ลงตะกร้าแล้ว 🍕');
 }
