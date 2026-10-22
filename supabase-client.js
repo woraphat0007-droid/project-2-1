@@ -14,5 +14,9 @@ window.getPizzaSupabase = function () {
   return window.pizzaSupabaseClient;
 };
 
+window.pizzaAuthRedirectUrl = function (page) {
+  return new URL(page, window.location.href).toString();
+};
+
 window.PIZZA_SUPABASE_URL = SUPABASE_URL;
 window.PIZZA_SUPABASE_ANON_KEY = SUPABASE_ANON_KEY;

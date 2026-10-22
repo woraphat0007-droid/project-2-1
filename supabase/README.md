@@ -113,11 +113,18 @@ For a hosted project, link this Supabase project, apply the migration, and deplo
 the `checkout` function. Set the hosted project URL and anon key in
 `supabase-client.js`, configure the exact website origin in
 `CHECKOUT_ALLOWED_ORIGINS` (the repository default includes
-`https://woraphat0007-droid.github.io`), and add the website URL to Supabase Auth's redirect
-URL allow list for email confirmation and password recovery. Enable email signup
-and configure the email provider in Supabase Auth. Supabase injects `SUPABASE_URL`
+`https://woraphat0007-droid.github.io`), and set Supabase Auth's Site URL to
+`https://woraphat0007-droid.github.io/project-2-1/`. Add
+`https://woraphat0007-droid.github.io/project-2-1/**` to Auth's redirect URL allow
+list for email confirmation and password recovery. Enable email signup and
+configure the email provider in Supabase Auth. Supabase injects `SUPABASE_URL`
 and `SUPABASE_SERVICE_ROLE_KEY` into Edge Functions; the service role key must
 never be placed in browser code.
+
+New member sign-up requires email confirmation in the current Supabase Auth
+configuration. The app sends confirmation links back to
+`/project-2-1/profile.html`; the login page can resend an expired confirmation
+link. After changing auth redirects, publish the updated frontend to GitHub Pages.
 
 The cart permits guest checkout by collecting pickup contact details or a
 delivery address. Signed-in members can select a saved address or enter a new

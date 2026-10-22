@@ -39,6 +39,7 @@ registerForm.addEventListener('submit', async event => {
       email: formData.get('email').trim(),
       password: passwordInputs[0].value,
       options: {
+        emailRedirectTo: pizzaAuthRedirectUrl('profile.html?confirmed=1'),
         data: {
           full_name: formData.get('fullName').trim(),
           phone: formData.get('phone').trim(),
@@ -51,7 +52,7 @@ registerForm.addEventListener('submit', async event => {
       window.location.href = redirect === 'cart.html' ? 'cart.html' : 'index.html';
       return;
     }
-    registerMessage.textContent = 'สมัครสมาชิกสำเร็จ กรุณายืนยันอีเมล แล้วเข้าสู่ระบบก่อนสั่งซื้อ';
+    registerMessage.textContent = 'สมัครสมาชิกแล้ว กรุณากดลิงก์ยืนยันในอีเมลเพื่อเปิดใช้งานบัญชี หากไม่พบอีเมลให้ตรวจสอบ Junk/Spam แล้วกลับมาหน้าเข้าสู่ระบบเพื่อส่งลิงก์ใหม่';
     registerMessage.hidden = false;
   } catch (error) {
     registerMessage.textContent = error.message || 'สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่';

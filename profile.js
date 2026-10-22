@@ -3,6 +3,7 @@ const passwordToggle = document.querySelector('#passwordToggle');
 const loginForm = document.querySelector('#loginForm');
 const loginMessage = document.querySelector('#loginMessage');
 const forgotPassword = document.querySelector('#forgotPassword');
+const resendConfirmation = document.querySelector('#resendConfirmation');
 const cartCount = document.querySelector('#cartCount');
 const memberPanel = document.querySelector('#memberPanel');
 const memberEmail = document.querySelector('#memberEmail');
@@ -19,6 +20,19 @@ function redirectAfterAuth() {
   window.location.href = redirect === 'cart.html' ? 'cart.html' : 'index.html';
 }
 
+function authRedirectMessage() {
+  const confirmed = new URLSearchParams(window.location.search).get('confirmed');
+  if (confirmed === '1') {
+    showMessage('ยืนยันอีเมลสำเร็จแล้ว กรุณาเข้าสู่ระบบด้วยอีเมลและรหัสผ่าน');
+    return;
+  }
+
+  const authError = new URLSearchParams(window.location.hash.slice(1));
+  if (authError.get('error_code') === 'otp_expired') {
+    showMessage('ลิงก์ยืนยันอีเมลหมดอายุหรือถูกใช้ไปแล้ว กรุณากด “ส่งลิงก์ใหม่” ด้านล่างช่องอีเมล');
+  }
+}
+
 forgotPassword.addEventListener('click', async () => {
   const email = document.querySelector('#username').value.trim();
   if (!email.includes('@')) {
@@ -28,12 +42,34 @@ forgotPassword.addEventListener('click', async () => {
 
   try {
     const { error } = await getPizzaSupabase().auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/profile.html`,
+      redirectTo: pizzaAuthRedirectUrl('profile.html?recovery=1'),
     });
     if (error) throw error;
     showMessage('ส่งลิงก์ตั้งรหัสผ่านใหม่ไปยังอีเมลแล้ว');
   } catch (error) {
     showMessage(error.message || 'ส่งลิงก์ไม่สำเร็จ กรุณาลองใหม่');
+  }
+});
+
+resendConfirmation.addEventListener('click', async () => {
+  const email = document.querySelector('#username').value.trim();
+  if (!email) {
+    showMessage('กรุณากรอกอีเมลที่ใช้สมัครสมาชิกก่อน');
+    return;
+  }
+
+  try {
+    const { error } = await getPizzaSupabase().auth.resend({
+      type: 'signup',
+      email,
+      options: {
+        emailRedirectTo: pizzaAuthRedirectUrl('profile.html?confirmed=1'),
+      },
+    });
+    if (error) throw error;
+    showMessage('ส่งลิงก์ยืนยันใหม่แล้ว กรุณาตรวจสอบอีเมลและโฟลเดอร์ Junk/Spam');
+  } catch (error) {
+    showMessage(error.message || 'ส่งลิงก์ยืนยันไม่สำเร็จ กรุณารอสักครู่แล้วลองใหม่');
   }
 });
 
@@ -56,7 +92,13 @@ loginForm.addEventListener('submit', async event => {
     if (error) throw error;
     redirectAfterAuth();
   } catch (error) {
-    showMessage(error.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาตรวจสอบข้อมูล');
+    if (error.code === 'email_not_confirmed') {
+      showMessage('อีเมลยังไม่ได้ยืนยัน กรุณายืนยันจากอีเมลก่อนเข้าสู่ระบบ หรือกดส่งลิงก์ใหม่');
+    } else if (error.code === 'invalid_credentials') {
+      showMessage('อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง');
+    } else {
+      showMessage(error.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่');
+    }
   }
 });
 
@@ -96,4 +138,5 @@ try {
   cartCount.classList.remove('show');
 }
 
+authRedirectMessage();
 loadMemberSession();
