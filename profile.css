@@ -114,7 +114,6 @@
 .password-label label { margin-bottom: 7px; }
 .forgot-link { padding: 0; background: transparent; color: var(--red); font: inherit; font-size: .8rem; }
 .forgot-link:hover { color: var(--red-dark); }
-.resend-confirmation { display: block; margin-top: 8px; }
 
 .password-field { position: relative; }
 .password-field input { padding-right: 68px; }

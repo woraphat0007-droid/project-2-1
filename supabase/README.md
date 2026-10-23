@@ -116,15 +116,19 @@ the `checkout` function. Set the hosted project URL and anon key in
 `https://woraphat0007-droid.github.io`), and set Supabase Auth's Site URL to
 `https://woraphat0007-droid.github.io/project-2-1/`. Add
 `https://woraphat0007-droid.github.io/project-2-1/**` to Auth's redirect URL allow
-list for email confirmation and password recovery. Enable email signup and
-configure the email provider in Supabase Auth. Supabase injects `SUPABASE_URL`
+list for password recovery. Enable email signup and turn off **Confirm email**
+under Authentication → Sign In / Providers → Email so new accounts can sign in
+without a confirmation link. Supabase Auth still stores and securely hashes
+passwords; do not store passwords in application tables. The
+`20261022160000_member_profiles.sql` migration mirrors each Auth user's email,
+name, and phone into `public.profiles`, backfills existing users, and restricts
+profile reads to the signed-in owner. Supabase injects `SUPABASE_URL`
 and `SUPABASE_SERVICE_ROLE_KEY` into Edge Functions; the service role key must
 never be placed in browser code.
 
-New member sign-up requires email confirmation in the current Supabase Auth
-configuration. The app sends confirmation links back to
-`/project-2-1/profile.html`; the login page can resend an expired confirmation
-link. After changing auth redirects, publish the updated frontend to GitHub Pages.
+Accounts created before turning off email confirmation may still need an
+administrator to confirm them in Authentication → Users. Publish the updated
+frontend to GitHub Pages after applying the profile migration.
 
 The cart permits guest checkout by collecting pickup contact details or a
 delivery address. Signed-in members can select a saved address or enter a new

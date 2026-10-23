@@ -39,7 +39,6 @@ registerForm.addEventListener('submit', async event => {
       email: formData.get('email').trim(),
       password: passwordInputs[0].value,
       options: {
-        emailRedirectTo: pizzaAuthRedirectUrl('profile.html?confirmed=1'),
         data: {
           full_name: formData.get('fullName').trim(),
           phone: formData.get('phone').trim(),
@@ -52,7 +51,13 @@ registerForm.addEventListener('submit', async event => {
       window.location.href = redirect === 'cart.html' ? 'cart.html' : 'index.html';
       return;
     }
-    registerMessage.textContent = 'สมัครสมาชิกแล้ว กรุณากดลิงก์ยืนยันในอีเมลเพื่อเปิดใช้งานบัญชี หากไม่พบอีเมลให้ตรวจสอบ Junk/Spam แล้วกลับมาหน้าเข้าสู่ระบบเพื่อส่งลิงก์ใหม่';
+    if (data.user) {
+      registerMessage.textContent = data.user.identities?.length === 0
+        ? 'อีเมลนี้มีบัญชีอยู่แล้ว กรุณาเข้าสู่ระบบ'
+        : 'บัญชีถูกสร้างแล้ว แต่ Supabase ยังเปิดยืนยันอีเมลอยู่ กรุณาปิด Confirm email ที่ Supabase Dashboard → Authentication → Sign In / Providers → Email แล้วให้ผู้ดูแลยืนยันบัญชีนี้ก่อนเข้าสู่ระบบ';
+    } else {
+      registerMessage.textContent = 'สมัครสมาชิกไม่สำเร็จ กรุณาตรวจสอบข้อมูลแล้วลองใหม่';
+    }
     registerMessage.hidden = false;
   } catch (error) {
     registerMessage.textContent = error.message || 'สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่';
