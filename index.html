@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pizza Pao | สั่งพิซซ่าออนไลน์</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reward.css">
 </head>
 <body>
 
@@ -107,12 +108,23 @@
     </section>
 
     <!-- สมัครสมาชิก -->
-    <section class="rewards">
+    <section class="rewards" id="guestRewards">
       <p class="eyebrow">สมัครสมาชิก Pizza Pao Rewards</p>
       <h2>รับรีวอร์ดสุดพิเศษ<br>ได้ทุกวัน ไม่ต้องรอ</h2>
       <p class="sub">สร้างบัญชีสมาชิก เพื่อสิทธิพิเศษต่างๆ<br>ของ Pizza Pao ได้เลยตอนนี้</p>
       <a class="btn-dark signup-link" id="signupBtn" href="profile.html">สร้างบัญชี</a>
       <div class="rewards-emoji">🍕</div>
+    </section>
+    <section class="reward-section great-deals-section" id="memberGreatDeals" aria-labelledby="memberGreatDealsTitle" hidden>
+      <h2 id="memberGreatDealsTitle">รีวอร์ดสคุ้มสำหรับสมาชิก</h2>
+      <p class="section-intro">ขอบคุณที่เป็นสมาชิก Pizza Pao Rewards</p>
+      <article class="great-deal-card">
+        <div class="great-deal-pizza" aria-hidden="true">🍕</div>
+        <div class="great-deal-copy">
+          <p>พบกับโปรโมชั่นสุดคุ้ม<br>เลือกเมนูโปรดของคุณ<br><strong>สั่งเลย!</strong></p>
+          <a class="btn-red great-deal-menu" href="menu.html">เลือกเมนู</a>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -155,6 +167,8 @@
 
   <div class="toast" id="toast"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
   <script src="product-catalog.js"></script>
   <script src="script.js"></script>
 </body>

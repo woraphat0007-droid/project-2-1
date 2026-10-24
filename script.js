@@ -57,6 +57,26 @@ function showToast(msg) {
   showToast.id = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+function updateRewardsSection(session) {
+  const isMember = Boolean(session);
+  $('#guestRewards').hidden = isMember;
+  $('#memberGreatDeals').hidden = !isMember;
+}
+
+const supabaseClient = getPizzaSupabase();
+supabaseClient.auth.onAuthStateChange((_event, session) => {
+  updateRewardsSection(session);
+});
+supabaseClient.auth.getSession()
+  .then(({ data, error }) => {
+    if (error) throw error;
+    updateRewardsSection(data.session);
+  })
+  .catch(error => {
+    console.error('Could not load member session:', error);
+    showToast('ตรวจสอบสถานะสมาชิกไม่สำเร็จ กรุณาโหลดหน้าใหม่');
+  });
+
 $$('[data-item]').forEach(btn => {
   btn.addEventListener('click', () => {
     const name = btn.dataset.item;
